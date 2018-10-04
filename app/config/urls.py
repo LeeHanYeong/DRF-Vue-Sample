@@ -21,4 +21,5 @@ from blog import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
+    path('api/', views.SampleAPIView.as_view()),
 ]
