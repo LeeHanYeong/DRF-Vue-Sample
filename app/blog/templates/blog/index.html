@@ -10,6 +10,35 @@
 	<script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
 </head>
 <body>
-	<h1>Django Vue Example!</h1>
+	<div id="app">
+		<h1>Django Vue Example!</h1>
+		<button @click="getMembers()">멤버들을 불러오자</button>
+		<ul>
+			<li v-for="member in girlsday">${member}</li>
+		</ul>
+	</div>
+
+	<script>
+		new Vue({
+			el: '#app',
+			delimiters: ['${', '}'],
+			data: {
+			  girlsday: []
+			},
+			methods: {
+			  getMembers: function () {
+			    const vm = this;
+			    axios({
+				    method: 'get',
+				    url: '/api/'
+			    }).then(function (response) {
+			      vm.girlsday = response.data;
+			    }).catch(function (response) {
+			      console.log('Error!');
+			    });
+			  }
+			}
+		})
+	</script>
 </body>
 </html>
