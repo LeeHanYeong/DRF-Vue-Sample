@@ -9,5 +9,7 @@ def index(request):
 
 class SampleAPIView(APIView):
     def get(self, request):
-        data = '민아,혜리,유라,소진'.split(',')
+        members = '민아,혜리,유라,소진'.split(',')
+        images = [f'/static/images/{member}.jpg' for member in 'hyeri,mina,sojin,yura'.split(',')]
+        data = [{'name': member, 'image': image} for member, image in zip(members, images)]
         return Response(data)

@@ -14,7 +14,7 @@
 		<h1>Django Vue Example!</h1>
 		<button @click="getMembers()">멤버들을 불러오자</button>
 		<ul>
-			<li v-for="member in girlsday">${member}</li>
+			<li v-for="member in girlsday">${member.name}: <img v-bind:src="member.image" alt=""></li>
 		</ul>
 	</div>
 
